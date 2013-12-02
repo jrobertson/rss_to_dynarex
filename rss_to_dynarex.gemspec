@@ -1,9 +1,10 @@
 Gem::Specification.new do |s|
   s.name = 'rss_to_dynarex'
-  s.version = '0.1.0'
+  s.version = '0.1.1'
   s.summary = 'rss_to_dynarex'
   s.authors = ['James Robertson']
   s.files = Dir['lib/**/*.rb']
+  s.files = Dir['lib/**/*.xsl']
   s.add_dependency('nokogiri')
   s.add_dependency('dynarex')
   s.signing_key = '../privatekeys/rss_to_dynarex.pem'
