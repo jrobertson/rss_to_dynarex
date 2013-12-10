@@ -5,7 +5,7 @@
 
   xmlns:content = "http://purl.org/rss/1.0/modules/content/"
 
-	xmlns:feed="http://purl.org/atom/ns#"
+	  xmlns:feed="http://www.w3.org/2005/Atom"
 
 	xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"	
 

@@ -13,10 +13,15 @@ class RSStoDynarex
 
     lib = File.dirname(__FILE__)
     xsl_buffer = File.read(lib + '/rss_to_dynarex.xsl')
+    #xsl_buffer = File.read('rss_to_dynarex.xsl')
 
     xslt  = Nokogiri::XSLT(xsl_buffer)
     doc = open(url, 'UserAgent' => 'RSStoDynarex'){|x| x.read }
-    @to_dynarex = Dynarex.new xslt.transform(Nokogiri::XML(doc.to_s)).to_s
+    doc.encode!('UTF-8', 'binary', invalid: :replace, 
+          undef: :replace, replace: '')
+    xml_buffer = xslt.transform(Nokogiri::XML(doc.to_s)).to_s
+    
+    @to_dynarex = Dynarex.new xml_buffer
   end
 
 end
