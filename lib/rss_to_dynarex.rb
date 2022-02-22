@@ -6,6 +6,7 @@ require 'dynarex'
 require 'nokogiri'
 
 class RSStoDynarex
+  include RXFReader
 
   attr_reader :to_dynarex
 
@@ -17,8 +18,8 @@ class RSStoDynarex
 
     xslt  = Nokogiri::XSLT(xsl_buffer)
     #doc = open(url, 'UserAgent' => 'RSStoDynarex'){|x| x.read }
-    doc = RXFHelper.read(url).first
-    doc.encode!('UTF-8', 'binary', invalid: :replace, 
+    doc = RXFReader.read(url).first
+    doc.encode!('UTF-8', 'binary', invalid: :replace,
           undef: :replace, replace: '')
     xml_buffer = xslt.transform(Nokogiri::XML(doc.to_s)).to_s
 
